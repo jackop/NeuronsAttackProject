@@ -1,5 +1,8 @@
 # Compiled class file
 *.class
+/attack/.settings
+/attack/.classpath
+/attack/.project
 
 # Log file
 *.log
