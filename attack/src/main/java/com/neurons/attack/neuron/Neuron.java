@@ -6,7 +6,13 @@ import java.util.Random;
 import java.util.stream.Collectors;
 import java.util.stream.DoubleStream;
 
+import com.neurons.attack.activation.ActivationFunction;
+import com.neurons.attack.activation.LinearFunction;
+import com.neurons.attack.activation.SigmoidalFunction;
+
 public class Neuron {
+	ActivationFunction function = new SigmoidalFunction();
+//	ActivationFunction function = new LinearFunction();
 	
 	protected ArrayList<Double> inputs;
 	protected ArrayList<Double> weights;
@@ -14,7 +20,12 @@ public class Neuron {
 	private final static Integer RANDOM_TO = 1;
 	
 	public Neuron(int numberOfInputs) {
-		randomDoubleValue(numberOfInputs).forEach(action -> System.out.println(action));
+		List<Double> random = randomDoubleValue(numberOfInputs)
+			.stream().collect(Collectors.toList());
+		
+		random.forEach(value -> System.out.println(value));
+		
+		System.out.println(function.calculate(random, random));
 	}
 	
 	private List<Double> randomDoubleValue(int numberOfInputs) {

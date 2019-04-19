@@ -12,7 +12,7 @@ public class App
     {
         System.out.println( "Neurons Attack!" );
         
-        Neuron neuron = new Neuron(4);
+        Neuron neuron = new Neuron(7);
         
     }
 }

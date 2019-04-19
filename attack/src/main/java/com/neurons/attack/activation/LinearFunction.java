@@ -1,0 +1,27 @@
+package com.neurons.attack.activation;
+
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.DoubleStream;
+
+public class LinearFunction implements ActivationFunction {
+
+	private static double result = 0;
+	
+	@Override
+	public double calculate(List<Double> inputs, List<Double> weights) {
+		DoubleStream.iterate(0, n -> inputs.size()-1)
+		.map(n -> result += function(inputs.get((int) n), weights.get((int) n)))
+        .boxed().collect(Collectors.toList());
+		inputs.clear();
+		return result;
+	}
+
+	@Override
+	public double function(double inputValue, double weightValue) {
+		return weightValue * inputValue;
+	}
+
+	
+
+}
