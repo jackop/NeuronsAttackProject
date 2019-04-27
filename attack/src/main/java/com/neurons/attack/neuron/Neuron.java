@@ -11,13 +11,14 @@ import com.neurons.attack.activation.LinearFunction;
 import com.neurons.attack.activation.SigmoidalFunction;
 
 public class Neuron {
-	ActivationFunction function = new SigmoidalFunction();
-//	ActivationFunction function = new LinearFunction();
+//	ActivationFunction function = new SigmoidalFunction();
+	ActivationFunction function = new LinearFunction();
 	
 	protected ArrayList<Double> inputs;
 	protected ArrayList<Double> weights;
 	private final static Integer RANDOM_FROM = -1;
 	private final static Integer RANDOM_TO = 1;
+	private final static Double BIAS = 0.05;
 	
 	public Neuron(int numberOfInputs) {
 		List<Double> random = randomDoubleValue(numberOfInputs)
@@ -25,7 +26,7 @@ public class Neuron {
 		
 		random.forEach(value -> System.out.println(value));
 		
-		System.out.println(function.calculate(random, random));
+		System.out.println(function.calculate(random, random, BIAS));
 	}
 	
 	private List<Double> randomDoubleValue(int numberOfInputs) {

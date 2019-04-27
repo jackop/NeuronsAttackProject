@@ -11,15 +11,15 @@ public class SigmoidalFunction implements ActivationFunction {
 	 */
 	
 	@Override
-	public double calculate(List<Double> inputs, List<Double> weights) {
-		inputs.forEach(input-> result += function(input, input));
-		inputs.clear();
+	public double calculate(List<Double> inputs, List<Double> weights, double bias) {
+		inputs.forEach(input-> result += function(input, input, bias));
+//		inputs.clear();
 		return result;
 	}
 
 	@Override
-	public double function(double inputValue, double weightValue) {
-		return 1.0f / (1.0f + (float) Math.exp(-inputValue));
+	public double function(double inputValue, double weightValue, double bias) {
+		return 1.0f / (1.0f + (float) Math.exp(-inputValue + bias));
 	}
 
 }
